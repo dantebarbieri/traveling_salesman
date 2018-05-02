@@ -56,6 +56,8 @@ function draw() {
     if (d < record_distance) {
       record_distance = d;
       best_ever = points.slice();
+    } else {
+      points = best_ever.slice();
     }
   }
 }
