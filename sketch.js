@@ -24,6 +24,20 @@ function draw() {
   text("Traveling Salesman Problem", width / 7, width / 25);
   text("Distance: " + round(record_distance), 0, height);
 
+  for (let i = 0; i < SPEED; i++) {
+    let swaps = [];
+    for (let j = 0; j < points.length / 3; j++) {
+      swaps.push(floor(random(points.length)));
+    }
+    points = swap(points, swaps);
+
+    d = calcPathLength(points);
+    if (d < record_distance) {
+      record_distance = d;
+      best_ever = points.slice();
+    }
+  }
+
   noFill();
   stroke(255, 255, 255, 102);
   strokeWeight(1.5);
@@ -47,20 +61,8 @@ function draw() {
     ellipse(point.x, point.y, 12);
   }
 
-  for (let i = 0; i < SPEED; i++) {
-    let swaps = [];
-    for (let j = 0; j < points.length; j++) {
-      swaps.push(floor(random(points.length)));
-    }
-    points = swap(points, swaps);
-
-    d = calcPathLength(points);
-    if (d < record_distance) {
-      record_distance = d;
-      best_ever = points.slice();
-    } else {
-      points = best_ever.slice();
-    }
+  if (d > record_distance) {
+    points = best_ever.slice();
   }
 }
 
