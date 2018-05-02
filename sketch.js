@@ -48,9 +48,11 @@ function draw() {
   }
 
   for (let i = 0; i < SPEED; i++) {
-    let p1 = floor(random(points.length));
-    let p2 = floor(random(points.length));
-    points = swap(points, p1, p2);
+    let swaps = [];
+    for (let j = 0; j < points.length; j++) {
+      swaps.push(floor(random(points.length)));
+    }
+    points = swap(points, swaps);
 
     d = calcPathLength(points);
     if (d < record_distance) {
@@ -62,10 +64,12 @@ function draw() {
   }
 }
 
-function swap(arr, i, j) {
-  let temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
+function swap(arr, indices) {
+  let temp = arr[indices[0]];
+  for (let i = 0; i < indices.length - 1; i++) {
+    arr[indices[i]] = arr[indices[i + 1]];
+  }
+  arr[indices[indices.length - 1]] = temp;
   return arr;
 }
 
