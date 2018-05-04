@@ -27,7 +27,7 @@ function draw() {
   for (let i = 0; i < SPEED; i++) {
     let swaps = [];
     let num_swaps = random(1, points.length);
-    for (let j = 0; j < SPEED; j++) {
+    for (let j = 0; j < i; j++) {
       num_swaps = random(1, num_swaps);
     }
     for (let j = 0; j < num_swaps; j++) {
