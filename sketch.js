@@ -1,5 +1,5 @@
 const TOTAL_POINTS = 12;
-const SPEED = 10;
+const SPEED = 12;
 
 let points = [];
 
