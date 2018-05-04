@@ -33,6 +33,7 @@ function draw() {
     for (let j = 0; j < num_swaps; j++) {
       swaps.push(floor(random(points.length)));
     }
+    points = best_ever.slice();
     points = swap(points, swaps);
 
     d = calcPathLength(points);
