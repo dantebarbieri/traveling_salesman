@@ -26,7 +26,11 @@ function draw() {
 
   for (let i = 0; i < SPEED; i++) {
     let swaps = [];
-    for (let j = 0; j < points.length / 3; j++) {
+    let num_swaps = random(1, points.length);
+    for (let j = 0; j < SPEED; j++) {
+      num_swaps = random(1, num_swaps);
+    }
+    for (let j = 0; j < num_swaps; j++) {
       swaps.push(floor(random(points.length)));
     }
     points = swap(points, swaps);
